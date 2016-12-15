@@ -1,0 +1,99 @@
+<h1>New Employee</h1>
+<div class="form-container" id="left">
+    <form method="post" >
+        <div class="form-group ">
+            <label for="emp_id">Employee ID</label>
+            <input type="text" id="emp_id" class="form-control" ng-model="vm.user.emp_id" required />
+        </div>
+        <div class="form-group ">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+        </div>
+        <div class="form-group" >
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
+        </div>
+        <div class="form-group" >
+            <label for="c_address">Current address</label>
+            <input type="text" id="c_address" class="form-control" ng-model="vm.user.address.c_address" required />
+        </div>
+         <div class="form-group" >
+            <label for="p_address">Permenent address</label>
+            <input type="text" id="p_address" class="form-control" ng-model="vm.user.address.p_address" required />
+        </div>
+        <div class="form-group" >
+            <label for="dob">Date of birth</label>
+            <input type="date" id="dob" class="form-control" ng-model="vm.user.dob" required />
+        </div>
+        <div class="form-group" >
+            <label for="contact">Contact no</label>
+            <input type="text" id="contact" class="form-control" ng-model="vm.user.contact" required />
+        </div>
+        <div class="form-group" >
+            <label for="email_off">Official mail id</label>
+            <input type="text" id="email_off" class="form-control" ng-model="vm.user.email.email_off" required />
+        </div>
+        <div class="form-group" >
+            <label for="email_per">Personal mail id</label>
+            <input type="text" id="email_per" class="form-control" ng-model="vm.user.email.email_per" required />
+        </div>
+        <div class="form-group" >
+            <label for="department">Department</label>
+            <input type="text" id="department" class="form-control" ng-model="vm.user.department" required />
+        </div>
+        <div class="form-group" >
+            <label for="designation">Designation</label>
+            <input type="text" id="designation" class="form-control" ng-model="vm.user.designation" required />
+        </div>
+         <div class="form-group" >
+            <label for="bas_salary">Basic salary</label>
+            <input type="text" id="bas_salary" class="form-control" ng-model="vm.user.bas_salary" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="hra">HRA</label>
+            <input type="text" id="hra" class="form-control" ng-model="vm.user.hra" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="other_allowances">Other allowances</label>
+            <input type="text" id="other_allowances" class="form-control" ng-model="vm.user.other_allowances" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="qualification">Qualifications</label>
+            <input type="text" id="qualification" class="form-control" ng-model="vm.user.qualification" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="specializations">Specializations</label>
+            <input type="text" id="specializations" class="form-control" ng-model="vm.user.specializations" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="curr_project">Current projects</label>
+            <input type="text" id="curr_project" class="form-control" ng-model="vm.user.curr_project" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="curr_role">Current Role</label>
+            <input type="text" id="curr_role" class="form-control" ng-model="vm.user.curr_role" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="annual_leave">Annual Leave</label>
+            <input type="text" id="annual_leave" class="form-control" ng-model="vm.user.annual_leave" required />
+        </div>
+
+           <div class="form-group" >
+            <label for="bal_leave">Balance Leave</label>
+            <input type="text" id="bal_leave" class="form-control" ng-model="vm.user.bal_leave" required />
+        </div>
+
+
+        <div class="form-group">
+            <button class="btn btn-primary"  ng-click="vm.addEmpl()" >Save</button>
+            <button class="btn btn-danger" ng-click="vm.clrEmp()">Cancel</button>
+        </div>
+    </form>
+</div>

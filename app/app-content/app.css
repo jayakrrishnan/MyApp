@@ -1,0 +1,14 @@
+﻿body {
+    padding: 20px 0;
+}
+
+.flash-message {
+    margin-top: 20px;
+}
+#left {
+  float:left;
+  width:50%;
+
+  margin:1px .2em 1px 1px;
+
+}
