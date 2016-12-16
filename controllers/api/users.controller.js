@@ -10,6 +10,8 @@ router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.post('/',addEmp);
+router.post('/',getEmp);
+
 module.exports = router;
 
 function authenticateUser(req, res) {
@@ -87,6 +89,20 @@ function addEmp(req, res) {
     userService.addEmp(req.body)
         .then(function () {
             res.sendStatus(200);
+        })
+        .catch(function (err) {
+            res.status(400).send(err);
+        });
+}
+
+function getEmp(req, res) {
+    userService.getEmp(req.user.sub)
+        .then(function (user) {
+            if (user) {
+                res.send(user);
+            } else {
+                res.sendStatus(404);
+            }
         })
         .catch(function (err) {
             res.status(400).send(err);

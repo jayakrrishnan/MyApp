@@ -16,6 +16,7 @@
         service.Update = Update;
         service.Delete = Delete;
         service.addEmp = addEmp;
+        service.getEmp = getEmp;
 
 
         return service;
@@ -50,6 +51,10 @@
 
         function addEmp(user) {
             return $http.post('/api/users', user).then(handleSuccess, handleError);
+        }
+
+        function getEmp(emp_id) {
+             return $http.getEmp('/api/users/' + emp_id).then(handleSuccess, handleError);
         }
 
         // private functions

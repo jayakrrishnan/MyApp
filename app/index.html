@@ -13,6 +13,7 @@
         <ul class="nav nav-tabs">
             <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
             <li ng-class="{active: activeTab === 'employee'}"><a ui-sref="employee">New Employee</a></li>
+            <li ng-class="{active: activeTab === 'edit'}"><a ui-sref="edit">edit Employee</a></li>
             <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
             <li><a href="/login" target="_self">Logout</a></li>
         </ul>
@@ -39,5 +40,7 @@
     <script src="home/index.controller.js"></script>
     <script src="account/index.controller.js"></script>
     <script src="employee/index.controller.js"></script>
+    <script src="edit/index.controller.js"></script>
+
 </body>
 </html>

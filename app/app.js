@@ -31,6 +31,13 @@
                 controller: 'Employee.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'employee' }
+            })
+            .state('edit', {
+                url: '/edit',
+                templateUrl: 'edit/index.html',
+                controller: 'Edit.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'edit' }
             });
     }
 

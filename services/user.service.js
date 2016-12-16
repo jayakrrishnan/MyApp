@@ -15,7 +15,7 @@ service.create = create;
 service.update = update;
 service.delete = _delete;
 service.addEmp = addEmp;
-
+service.getEmp = getEmp;
 
 module.exports = service;
 
@@ -187,6 +187,23 @@ function addEmp(userParam) {
             });
            
     }
+
+    return deferred.promise;
+}
+function getEmp(emp_id) {
+    var deferred = Q.defer();
+
+    db.users.findOne(emp_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (user) {
+            // return user (without hashed password)
+            deferred.resolve(_.omit(user, 'emp_id'));
+        } else {
+            // user not found
+            deferred.resolve();
+        }
+    });
 
     return deferred.promise;
 }
