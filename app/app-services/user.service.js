@@ -54,7 +54,7 @@
         }
 
         function getEmp(emp_id) {
-             return $http.getEmp('/api/users/' + emp_id).then(handleSuccess, handleError);
+             return $http.get('/api/users/' + emp_id).then(handleSuccess, handleError);
         }
 
         // private functions

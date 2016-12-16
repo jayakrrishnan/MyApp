@@ -101,7 +101,7 @@ function getEmp(req, res) {
             if (user) {
                 res.send(user);
             } else {
-                res.sendStatus(404);
+                res.sendStatus(404).send("not here");
             }
         })
         .catch(function (err) {

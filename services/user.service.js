@@ -193,7 +193,7 @@ function addEmp(userParam) {
 function getEmp(emp_id) {
     var deferred = Q.defer();
 
-    db.users.findOne(emp_id, function (err, user) {
+    db.employee.findOne(emp_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user) {
