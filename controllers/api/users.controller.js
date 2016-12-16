@@ -96,12 +96,13 @@ function addEmp(req, res) {
 }
 
 function getEmp(req, res) {
+  //  var emp_id=req.user.sub;
     userService.getEmp(req.user.sub)
         .then(function (user) {
             if (user) {
                 res.send(user);
             } else {
-                res.sendStatus(404).send("not here");
+                res.sendStatus(404);
             }
         })
         .catch(function (err) {
