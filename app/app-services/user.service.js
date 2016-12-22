@@ -17,7 +17,8 @@
         service.Delete = Delete;
         service.addEmp = addEmp;
         service.getEmp = getEmp;
-
+        service.EmpUpdate = EmpUpdate;
+        service.EmpDelete = EmpDelete;
 
         return service;
 
@@ -55,6 +56,14 @@
 
         function getEmp(emp_id) {
              return $http.get('/api/users/' + emp_id).then(handleSuccess, handleError);
+        }
+
+        function EmpUpdate(user) {
+            return $http.put('/api/users/' + user._id, user).then(handleSuccess, handleError);
+        }
+
+        function EmpDelete(emp_id) {
+            return $http.delete('/api/users/' + emp_id).then(handleSuccess, handleError);
         }
 
         // private functions

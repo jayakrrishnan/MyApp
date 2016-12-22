@@ -38,11 +38,24 @@
 
 
         function saveEmpl() {
-            
+            UserService.EmpUpdate(vm.user)
+                .then(function () {
+                    FlashService.Success('Employee updated');
+                })
+                .catch(function (error) {
+                    FlashService.Error(error);
+                });
         }
         function delEmp() {
             //
-            
+            UserService.EmpDelete(vm.user.emp_id)
+                .then(function () {
+                    // log user out
+                    $window.location = '/login';
+                })
+                .catch(function (error) {
+                    FlashService.Error(error);
+                });
         }
     }
 

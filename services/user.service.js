@@ -16,6 +16,9 @@ service.update = update;
 service.delete = _delete;
 service.addEmp = addEmp;
 service.getEmp = getEmp;
+service.updateEm = updateEm;
+//service.deleteEm = deleteEm;
+
 
 module.exports = service;
 
@@ -206,3 +209,76 @@ function getEmp(emp_id) {
 
     return deferred.promise;
 }
+
+function updateEm(emp_id, userParam) {
+    var deferred = Q.defer();
+
+    // validation
+     db.employee.findById(_id, function (err, user) {
+        if (err) deferred.reject(err.name + ': ' + err.message);
+
+        if (user.emp_id !== userParam.emp_id) {
+            // username has changed so check if the new username is already taken
+            db.employee.findOne(
+                { emp_id: userParam.emp_id },
+                function (err, user) {
+                    if (err) deferred.reject(err.name + ': ' + err.message);
+
+                    if (user) {
+                        // username already exists
+                        deferred.reject('EmpId "' + req.body.username + '" is already taken')
+                    } else {
+                        updateEmp();
+                    }
+                });
+        } else {
+            updateEmp();
+        }
+    });
+
+    function updateEmp() {
+        // fields to update
+     
+        db.employee.update(
+            { emp_id: user.emp_id },
+            { "firstName": userParam.firstName,
+            "lastName": userParam.lastName,
+            "address":[{ "c_address":userParam.c_address},{"p_address":userParam.p_address}],
+            "email":[{"email_off":userParam.email_off},{"email_per":userParam.email_per}],
+            "dob": userParam.dob,
+            "contact": userParam.contact,
+            "department": userParam.department,
+            "designation": userParam.designation,
+            "bas_salary": userParam.bas_salary,
+            "hra": userParam.hra,
+            "other_allowances": userParam.other_allowances,
+            "qualification": userParam.qualification,
+            "specialization":userParam.specialization,
+            "curr_project": userParam.curr_project,
+            "curr_role": userParam.curr_role,
+            "annual_leave": userParam.annual_leave,
+            "bal_leave": userParam.bal_leave
+         },
+            function (err, doc) {
+                if (err) deferred.reject(err.name + ': ' + err.message);
+
+                deferred.resolve();
+            });
+    }
+
+    return deferred.promise;
+}
+/*
+function deleteEm(emp_id) {
+    var deferred = Q.defer();
+
+    db.employee.remove(
+        { emp_id: mongo.helper.toObjectID(_id) },
+        function (err) {
+            if (err) deferred.reject(err.name + ': ' + err.message);
+
+            deferred.resolve();
+        });
+
+    return deferred.promise;
+}*/
