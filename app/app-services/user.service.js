@@ -53,8 +53,8 @@
             return $http.post('/api/users', user).then(handleSuccess, handleError);
         }
 
-        function getEmp(user) {
-             return $http.get('/api/users/' + user.emp_id).then(handleSuccess, handleError);
+        function getEmp(emp_id) {
+             return $http.get('/api/users/' + emp_id).then(handleSuccess, handleError);
         }
 
         // private functions

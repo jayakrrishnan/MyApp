@@ -10,7 +10,7 @@ router.get('/current', getCurrentUser);
 router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.post('/',addEmp);
-router.post('/',getEmp);
+router.get('/:emp_id',getEmp);
 
 module.exports = router;
 
@@ -97,7 +97,8 @@ function addEmp(req, res) {
 
 function getEmp(req, res) {
   //  var emp_id=req.user.sub;
-    userService.getEmp(req.user.sub)
+
+    userService.getEmp(req.params.emp_id)
         .then(function (user) {
             if (user) {
                 res.send(user);

@@ -23,7 +23,7 @@
         }
         function searchEmp() {
 
-           UserService.getEmp(vm.user).then(function (user) {
+           UserService.getEmp(vm.user.emp_id).then(function (user) {
                 vm.showTheForm =true;
                 vm.user = user;
 
