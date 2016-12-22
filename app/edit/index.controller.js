@@ -38,7 +38,7 @@
 
 
         function saveEmpl() {
-            UserService.EmpUpdate(vm.user)
+            UserService.updateEmp(vm.user)
                 .then(function () {
                     FlashService.Success('Employee updated');
                 })
@@ -48,10 +48,10 @@
         }
         function delEmp() {
             //
-            UserService.EmpDelete(vm.user.emp_id)
+            UserService.DeleteEmp(vm.user)
                 .then(function () {
-                    // log user out
-                    $window.location = '/login';
+                    FlashService.Success('Employee deleted');
+                
                 })
                 .catch(function (error) {
                     FlashService.Error(error);

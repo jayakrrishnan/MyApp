@@ -11,8 +11,8 @@ router.put('/:_id', updateUser);
 router.delete('/:_id', deleteUser);
 router.post('/',addEmp);
 router.get('/:emp_id',getEmp);
-router.put('/:emp_id', updateEmp);
-router.delete('/:emp_id', deleteEmp);
+router.put('/emp/:emp_id', updateEmp);
+router.delete('/emp/:emp_id', deleteEmp);
 module.exports = router;
 
 function authenticateUser(req, res) {
@@ -118,7 +118,7 @@ function updateEmp(req, res) {
         return res.status(401).send('You can only update your own account');
     }*/
 
-    userService.updateEm(emp_id, req.body)
+    userService.updateEmp(emp_id, req.body)
         .then(function () {
             res.sendStatus(200);
         })
@@ -129,12 +129,12 @@ function updateEmp(req, res) {
 
 function deleteEmp(req, res) {
     var empId = req.user.sub;
-    if (req.params.emp_id !== empId) {
+  /*  if (req.params.emp_id !== empId) {
         // can only delete own account
         return res.status(401).send('You can only delete your own account');
     }
-
-    userService.deleteEm(empId)
+*/
+    userService.deleteEm(req.params.emp_id)
         .then(function () {
             res.sendStatus(200);
         })

@@ -16,8 +16,8 @@ service.update = update;
 service.delete = _delete;
 service.addEmp = addEmp;
 service.getEmp = getEmp;
-service.updateEm = updateEm;
-//service.deleteEm = deleteEm;
+service.updateEmp = updateEmp;
+service.deleteEm = deleteEm;
 
 
 module.exports = service;
@@ -210,11 +210,11 @@ function getEmp(emp_id) {
     return deferred.promise;
 }
 
-function updateEm(emp_id, userParam) {
+function updateEmp(emp_id, userParam) {
     var deferred = Q.defer();
 
     // validation
-     db.employee.findById(_id, function (err, user) {
+    /* db.employee.findById(_id, function (err, user) {
         if (err) deferred.reject(err.name + ': ' + err.message);
 
         if (user.emp_id !== userParam.emp_id) {
@@ -232,20 +232,23 @@ function updateEm(emp_id, userParam) {
                     }
                 });
         } else {
-            updateEmp();
+          updateEmp();  
         }
-    });
+    });*/
+              updateEmp();  
 
     function updateEmp() {
         // fields to update
-     
+    
         db.employee.update(
-            { emp_id: user.emp_id },
+            { "emp_id": userParam.emp_id },
             { "firstName": userParam.firstName,
             "lastName": userParam.lastName,
-            "address":[{ "c_address":userParam.c_address},{"p_address":userParam.p_address}],
-            "email":[{"email_off":userParam.email_off},{"email_per":userParam.email_per}],
-            "dob": userParam.dob,
+            "address":{"c_address":userParam.address.c_address,
+                        "p_address":userParam.address.p_address},
+            "email":{"email_off":userParam.email.email_off,
+                    "email_per":userParam.email.email_per},
+            "emp_id": userParam.emp_id,
             "contact": userParam.contact,
             "department": userParam.department,
             "designation": userParam.designation,
@@ -253,7 +256,7 @@ function updateEm(emp_id, userParam) {
             "hra": userParam.hra,
             "other_allowances": userParam.other_allowances,
             "qualification": userParam.qualification,
-            "specialization":userParam.specialization,
+            "specialization":userParam.specializations,
             "curr_project": userParam.curr_project,
             "curr_role": userParam.curr_role,
             "annual_leave": userParam.annual_leave,
@@ -268,12 +271,13 @@ function updateEm(emp_id, userParam) {
 
     return deferred.promise;
 }
-/*
-function deleteEm(emp_id) {
-    var deferred = Q.defer();
 
+function deleteEm(_id) {
+    var deferred = Q.defer();
+    console.log( "here"+ _id);
     db.employee.remove(
-        { emp_id: mongo.helper.toObjectID(_id) },
+       // { emp_id: emp_id },
+        {emp_id: _id},
         function (err) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
@@ -281,4 +285,4 @@ function deleteEm(emp_id) {
         });
 
     return deferred.promise;
-}*/
+}
